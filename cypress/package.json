@@ -1,0 +1,11 @@
+{
+  "name": "CluePoint",
+  "version": "1.0.0",
+  "scripts": {
+    "test:cypress": "cypress open",
+    "test:cypress:run": "cypress run --browser chrome"
+  },
+  "devDependencies": {
+    "cypress": "^13.13.2"
+  }
+}
