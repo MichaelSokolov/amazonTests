@@ -1,11 +1,7 @@
-import { test } from "@playwright/test";
-import { Search } from "../../pages/searchComponent";
-import { LeftPane } from "../../pages/letfPannelComponent";
-import { ProductList } from "../../pages/productListComponent";
-import { InfoBar } from "../../pages/infoBarComponent";
+import { test } from "../../fixtures/fixturePages";
 
 test.beforeEach(async ({ page }) => {
-  // Close location change pop-up if displayed
+  // Close the location change pop-up if displayed
   await page.addLocatorHandler(
     page.locator("//*[@data-action-type='DISMISS']"),
     async () => {
@@ -20,13 +16,12 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("PC Gaming Keyboard department - check sorting items by price in descending order", async ({
+  search,
+  leftPane,
+  productList,
+  infoBar,
   page,
 }) => {
-  const search = new Search(page);
-  const leftPane = new LeftPane(page);
-  const productList = new ProductList(page);
-  const infoBar = new InfoBar(page);
-
   // Search for "PC Gaming Keyboards"
   await search.typeSearchRequest("PC Gaming Keyboards");
   await search.clickSearchButton();
@@ -57,12 +52,10 @@ test("PC Gaming Keyboard department - check sorting items by price in descending
 });
 
 test("Headphones & Earbuds department - check filtering options", async ({
-  page,
+  search,
+  leftPane,
+  productList,
 }) => {
-  const search = new Search(page);
-  const leftPane = new LeftPane(page);
-  const productList = new ProductList(page);
-
   // Search for "Headphones & Earbuds"
   await search.typeSearchRequest("Headphones & Earbuds");
   await search.clickSearchButton();
