@@ -43,7 +43,10 @@ export default defineConfig({
     {
       name: "chromium",
       testMatch: "**.spec.ts",
-      use: { ...devices["Desktop Chrome"] },
+      use: {
+        ...devices["Desktop Chrome"],
+        permissions: ["geolocation", "notifications"],
+      },
     },
 
     // {
