@@ -12,20 +12,16 @@ type Pages = {
 };
 
 export const test = base.extend<Pages>({
-  search: ({ page }, use) => {
-    const search = new Search(page);
-    use(search);
+  search: async ({ page }, use) => {
+    await use(new Search(page));
   },
-  leftPane: ({ page }, use) => {
-    const leftPane = new LeftPane(page);
-    use(leftPane);
+  leftPane: async ({ page }, use) => {
+    await use(new LeftPane(page));
   },
-  productList: ({ page }, use) => {
-    const productList = new ProductList(page);
-    use(productList);
+  productList: async ({ page }, use) => {
+    await use(new ProductList(page));
   },
-  infoBar: ({ page }, use) => {
-    const infoBar = new InfoBar(page);
-    use(infoBar);
+  infoBar: async ({ page }, use) => {
+    await use(new InfoBar(page));
   },
 });
